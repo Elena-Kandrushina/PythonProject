@@ -1,11 +1,15 @@
 from src.masks import get_mask_card_number
+from src.masks import get_mask_account
 
 
 def mask_account_card(account_card: str) -> str:
     """Функция принимает аргумент — строку, содержащую тип и номер карты или счета и
     возвращает строку с замаскированным номером"""
     if "Счет" in account_card:
-        mask_account_card = f"{account_card[:4]} **{account_card[-5:-1]}"
+        mask_account = f"{account_card[:4]}"
+        mask_card = f"{account_card[-5:-1]}"
+        mask_card = get_mask_account(mask_card)
+        mask_account_card = mask_account + " " + mask_card
         return mask_account_card
     else:
         tip_card = f"{account_card[:-16]}"
@@ -17,7 +21,7 @@ def mask_account_card(account_card: str) -> str:
 
 
 if __name__ == "__main__":
-    print(mask_account_card("Visa Platinum 7000792289606361"))
+    print(mask_account_card("Счет 73654108430135874305"))
 
 
 def get_date(date_t02: str) -> str:
