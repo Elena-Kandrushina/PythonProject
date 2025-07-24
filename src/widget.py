@@ -21,7 +21,7 @@ def mask_account_card(account_card: str) -> str:
 
 
 if __name__ == "__main__":
-    print(mask_account_card("Счет 73654108430135874305"))
+    print(mask_account_card("Счет 73654108430135874389"))
 
 
 def get_date(date_t02: str) -> str:
